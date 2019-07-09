@@ -9,13 +9,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 
@@ -23,10 +28,11 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieFragment extends Fragment implements View.OnClickListener {
+public class MovieFragment extends Fragment {
 
     private RecyclerView rvMovie;
     private ArrayList<Movie> list = new ArrayList<>();
+    private ListMovieAdapter listMovieAdapter;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -54,16 +60,36 @@ public class MovieFragment extends Fragment implements View.OnClickListener {
         showRecyclerList();
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
-
     private void showRecyclerList() {
         rvMovie.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ListMovieAdapter listMovieAdapter = new ListMovieAdapter(getActivity());
-        listMovieAdapter.setListMovie(list);
+        listMovieAdapter = new ListMovieAdapter(getActivity(), list);
+        //listMovieAdapter.setListMovie(list);
         rvMovie.setAdapter(listMovieAdapter);
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onPrepareOptionsMenu(menu);
+        inflater.inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        final SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                listMovieAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+    }
 }

@@ -9,23 +9,28 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
-public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.CategoryViewHolder> {
+public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.CategoryViewHolder> implements Filterable {
 
     private Context context;
-    private ArrayList<Movie> listMovie;
-    private int lastPosition = -1;
+    private ArrayList<Movie> listMovie, filterListMovie;
+    CustomFilter filter;
 
-    public ListMovieAdapter(Context context) {
+    public ListMovieAdapter(Context context, ArrayList<Movie> listMovie) {
         this.context = context;
+        this.listMovie = listMovie;
+        this.filterListMovie = listMovie;
     }
 
     public ArrayList<Movie> getListMovie() {
@@ -44,7 +49,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final CategoryViewHolder holder, int position) {
         holder.tvTitle.setText(getListMovie().get(position).getTitle());
         holder.tvReleasedYear.setText(getListMovie().get(position).getReleasedYear());
         holder.tvRating.setText(getListMovie().get(position).getRating());
@@ -56,6 +61,14 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
                 .load(getListMovie().get(position).getPoster())
                 .into(holder.imgPoster);
 
+        // Implement Click Listener ---------> Intent
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Toast.makeText(context, listMovie.get(pos).getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // Animation
         setFadeAnimation(holder.itemView);
     }
@@ -65,7 +78,15 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
         return getListMovie().size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public Filter getFilter() {
+        if (filter == null) {
+            filter = new CustomFilter(filterListMovie, this);
+        }
+        return filter;
+    }
+
+    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvTitle;
         TextView tvReleasedYear;
         ImageView imgPoster;
@@ -74,6 +95,8 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
         RatingBar scoreHome;
         TextView tvScoreAngkaHome;
         TextView tvOverviewHome;
+
+        ItemClickListener itemClickListener;
 
         CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -85,6 +108,17 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
             scoreHome = itemView.findViewById(R.id.scoreHome);
             tvScoreAngkaHome = itemView.findViewById(R.id.tv_item_scoreAngkaHome);
             tvOverviewHome = itemView.findViewById(R.id.tv_item_overview);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            this.itemClickListener.onItemClick(v, getLayoutPosition());
+        }
+
+        public void setItemClickListener(ItemClickListener ic) {
+            this.itemClickListener = ic;
         }
     }
 
