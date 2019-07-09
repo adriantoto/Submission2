@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ripple_list_item"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview_poster"
+        android:layout_width="100dp"
+        android:layout_height="165dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        app:cardCornerRadius="15dp">
+
+        <ImageView
+            android:id="@+id/img_item_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            tools:src="@android:color/darker_gray" />
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@id/cardview_poster"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Aquaman" />
+
+    <TextView
+        android:id="@+id/tv_item_releasedYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_title"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@id/cardview_poster"
+        android:textSize="16sp"
+        tools:text="2018" />
+
+    <TextView
+        android:id="@+id/tv_item_retingHome"
+        android:layout_width="35dp"
+        android:layout_height="20dp"
+        android:layout_below="@id/tv_item_releasedYear"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@id/cardview_poster"
+        android:background="@drawable/rating_round_bg"
+        android:gravity="center"
+        android:text="PG-13"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/tv_item_genreHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_retingHome"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@id/cardview_poster"
+        android:text="Horror, Sci-fi, Adventure, Animation"
+        android:textSize="12sp" />
+
+    <RatingBar
+        android:id="@+id/scoreHome"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_genreHome"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@id/cardview_poster"
+        android:isIndicator="true"
+        android:max="5"
+        android:stepSize="0.01"
+        android:theme="@style/RatingBar" />
+
+    <TextView
+        android:id="@+id/tv_item_scoreAngkaHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_genreHome"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="1dp"
+        android:layout_toEndOf="@id/scoreHome"
+        android:text="75"
+        android:textColor="@color/duskYellow"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_item_genreHome"
+        android:layout_toEndOf="@id/tv_item_scoreAngkaHome"
+        android:text="%"
+        android:textColor="@color/duskYellow"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_item_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scoreHome"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/cardview_poster"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="Overview"
+        android:textColor="@android:color/black" />
+
+</RelativeLayout>
