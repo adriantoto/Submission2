@@ -21,8 +21,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import static dicoding.adrian.madesubmission2.MoviesData.string_data;
 
 
 /**
@@ -45,17 +48,21 @@ public class MovieFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_movie, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Divider between item list
+        // Declare RecyclerView
         rvMovie = view.findViewById(R.id.rv_movie);
+
+        // Divider between item list
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
         rvMovie.addItemDecoration(itemDecorator);
         rvMovie.setHasFixedSize(true);
 
+        // Get All The Data
         list.addAll(MoviesData.getListData());
         showRecyclerList();
     }
@@ -63,7 +70,6 @@ public class MovieFragment extends Fragment {
     private void showRecyclerList() {
         rvMovie.setLayoutManager(new LinearLayoutManager(getActivity()));
         listMovieAdapter = new ListMovieAdapter(getActivity(), list);
-        //listMovieAdapter.setListMovie(list);
         rvMovie.setAdapter(listMovieAdapter);
     }
 
