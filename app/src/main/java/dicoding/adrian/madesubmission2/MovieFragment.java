@@ -97,5 +97,6 @@ public class MovieFragment extends Fragment {
                 return false;
             }
         });
+
     }
 }
