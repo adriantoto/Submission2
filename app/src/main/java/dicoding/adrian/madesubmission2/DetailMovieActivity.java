@@ -1,7 +1,9 @@
 package dicoding.adrian.madesubmission2;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.net.Uri;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dicoding.adrian.madesubmission2.R;
+
 import com.bumptech.glide.Glide;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
@@ -46,6 +49,13 @@ public class DetailMovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_movie);
+
+        // TextView Layout Gradient
+        TextView myBackground = findViewById(R.id.textView5);
+        AnimationDrawable animationDrawable = (AnimationDrawable) myBackground.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(4000);
+        animationDrawable.start();
 
         // Translucent Status Bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
