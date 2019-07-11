@@ -1,6 +1,9 @@
 package dicoding.adrian.madesubmission2;
 
-public class Movie {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Movie implements Parcelable {
 
     // POJO Properties
     private String poster;
@@ -95,4 +98,51 @@ public class Movie {
     public void setDirector(String director) {
         this.director = director;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.poster);
+        dest.writeString(this.title);
+        dest.writeString(this.releasedYear);
+        dest.writeString(this.overview);
+        dest.writeString(this.rating);
+        dest.writeString(this.genre);
+        dest.writeInt(this.score);
+        dest.writeString(this.trailer);
+        dest.writeString(this.runtime);
+        dest.writeString(this.director);
+    }
+
+    public Movie() {
+    }
+
+    protected Movie(Parcel in) {
+        this.poster = in.readString();
+        this.title = in.readString();
+        this.releasedYear = in.readString();
+        this.overview = in.readString();
+        this.rating = in.readString();
+        this.genre = in.readString();
+        this.score = in.readInt();
+        this.trailer = in.readString();
+        this.runtime = in.readString();
+        this.director = in.readString();
+    }
+
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 }
