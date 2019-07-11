@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
@@ -17,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -25,7 +22,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
 
     private Context context;
     private ArrayList<Movie> listMovie, filterListMovie;
-    CustomFilter filter;
+    CustomFilterMovie filter;
 
     public ListMovieAdapter(Context context, ArrayList<Movie> listMovie) {
         this.context = context;
@@ -62,7 +59,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
                 .into(holder.imgPoster);
 
         // Implement Click Listener ---------> Intent
-        holder.setItemClickListener(new ItemClickListener() {
+        holder.setItemClickListenerMovie(new ItemClickListenerMovie() {
             @Override
             public void onItemClick(View v, int pos) {
                 Toast.makeText(context, listMovie.get(pos).getTitle(), Toast.LENGTH_SHORT).show();
@@ -81,7 +78,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
     @Override
     public Filter getFilter() {
         if (filter == null) {
-            filter = new CustomFilter(filterListMovie, this);
+            filter = new CustomFilterMovie(filterListMovie, this);
         }
         return filter;
     }
@@ -96,7 +93,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
         TextView tvScoreAngkaHome;
         TextView tvOverviewHome;
 
-        ItemClickListener itemClickListener;
+        ItemClickListenerMovie itemClickListenerMovie;
 
         CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -114,11 +111,11 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
 
         @Override
         public void onClick(View v) {
-            this.itemClickListener.onItemClick(v, getLayoutPosition());
+            this.itemClickListenerMovie.onItemClick(v, getLayoutPosition());
         }
 
-        public void setItemClickListener(ItemClickListener ic) {
-            this.itemClickListener = ic;
+        public void setItemClickListenerMovie(ItemClickListenerMovie ic) {
+            this.itemClickListenerMovie = ic;
         }
     }
 

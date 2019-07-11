@@ -2,6 +2,6 @@ package dicoding.adrian.madesubmission2;
 
 import android.view.View;
 
-public interface ItemClickListener {
+public interface ItemClickListenerTvshow {
     void onItemClick(View v, int pos);
 }

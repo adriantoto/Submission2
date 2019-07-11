@@ -5,16 +5,28 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.SearchView;
 
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TVShowFragment extends Fragment implements View.OnClickListener {
+public class TVShowFragment extends Fragment {
+
+    private RecyclerView rvTvshow;
+    private ArrayList<Tvshow> list = new ArrayList<>();
+    private ListTvshowAdapter listTvshowAdapter;
 
     public TVShowFragment() {
         // Required empty public constructor
@@ -27,14 +39,55 @@ public class TVShowFragment extends Fragment implements View.OnClickListener {
         return inflater.inflate(R.layout.fragment_tvshow, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // Declare RecyclerView
+        rvTvshow = view.findViewById(R.id.rv_tvShow);
+
+        // Divider between item list
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
+        rvTvshow.addItemDecoration(itemDecorator);
+        rvTvshow.setHasFixedSize(true);
+
+        // Get All The Data
+        list.addAll(TvshowsData.getListData());
+        showRecyclerList();
+    }
+
+    private void showRecyclerList() {
+        rvTvshow.setLayoutManager(new LinearLayoutManager(getActivity()));
+        listTvshowAdapter = new ListTvshowAdapter(getActivity(), list);
+        rvTvshow.setAdapter(listTvshowAdapter);
     }
 
     @Override
-    public void onClick(View v) {
-
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onPrepareOptionsMenu(menu);
+        inflater.inflate(R.menu.menu_search, menu);
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        final SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                listTvshowAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+    }
 }

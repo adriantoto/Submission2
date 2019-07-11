@@ -13,7 +13,7 @@
     android:paddingBottom="16dp">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cardview_poster"
+        android:id="@+id/cardview_poster_tvshow"
         android:layout_width="100dp"
         android:layout_height="165dp"
         android:layout_margin="5dp"
@@ -27,7 +27,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/img_item_poster"
+            android:id="@+id/img_item_poster_tvshow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
@@ -36,24 +36,24 @@
     </android.support.v7.widget.CardView>
 
     <TextView
-        android:id="@+id/tv_item_title"
+        android:id="@+id/tv_item_title_tvshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview_poster"
+        app:layout_constraintStart_toEndOf="@+id/cardview_poster_tvshow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="Aquaman" />
+        tools:text="The Flash" />
 
     <TextView
-        android:id="@+id/tv_item_releasedYear"
+        android:id="@+id/tv_item_releasedYear_tvshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -61,32 +61,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview_poster"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_title"
+        app:layout_constraintStart_toEndOf="@+id/cardview_poster_tvshow"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_title_tvshow"
         app:layout_constraintVertical_bias="0.0"
         tools:text="2018" />
 
     <TextView
-        android:id="@+id/tv_item_retingHome"
+        android:id="@+id/tv_item_retingHome_tvshow"
         android:layout_width="35dp"
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:background="@drawable/rating_round_bg"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/white"
         android:textSize="10sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview_poster"
-        app:layout_constraintTop_toBottomOf="@id/tv_item_releasedYear"
+        app:layout_constraintStart_toEndOf="@+id/cardview_poster_tvshow"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_releasedYear_tvshow"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="SmallSp"
         tools:text="PG-13" />
 
     <TextView
-        android:id="@+id/tv_item_genreHome"
+        android:id="@+id/tv_item_genreHome_tvshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -94,13 +94,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview_poster"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_retingHome"
+        app:layout_constraintStart_toEndOf="@+id/cardview_poster_tvshow"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_retingHome_tvshow"
         app:layout_constraintVertical_bias="0.0"
         tools:text="Horror, Sci-fi, Adventure, Animation" />
 
     <RatingBar
-        android:id="@+id/scoreHome"
+        android:id="@+id/scoreHome_tvshow"
         style="@style/Widget.AppCompat.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -112,12 +112,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview_poster"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_genreHome"
+        app:layout_constraintStart_toEndOf="@+id/cardview_poster_tvshow"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_genreHome_tvshow"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_item_scoreAngkaHome"
+        android:id="@+id/tv_item_scoreAngkaHome_tvshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -127,14 +127,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/scoreHome"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_genreHome"
+        app:layout_constraintStart_toEndOf="@+id/scoreHome_tvshow"
+        app:layout_constraintTop_toBottomOf="@+id/tv_item_genreHome_tvshow"
         app:layout_constraintVertical_bias="0.0"
         tools:text="75" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
         android:text="%"
         android:textColor="@color/duskYellow"
         android:textSize="12sp"
@@ -142,24 +143,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_item_scoreAngkaHome"
-        app:layout_constraintTop_toTopOf="@+id/tv_item_scoreAngkaHome"
+        app:layout_constraintStart_toEndOf="@+id/tv_item_scoreAngkaHome_tvshow"
+        app:layout_constraintTop_toTopOf="@+id/tv_item_scoreAngkaHome_tvshow"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/tv_item_overview"
+        android:id="@+id/tv_item_overview_tvshow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:maxLines="3"
-        android:textColor="@android:color/black"
+        android:textColor="@color/black"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cardview_poster"
-        app:layout_constraintTop_toBottomOf="@+id/scoreHome"
+        app:layout_constraintStart_toEndOf="@+id/cardview_poster_tvshow"
+        app:layout_constraintTop_toBottomOf="@+id/scoreHome_tvshow"
         app:layout_constraintVertical_bias="0.0"
         tools:text="Overview" />
 

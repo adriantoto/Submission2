@@ -4,12 +4,12 @@ import android.widget.Filter;
 
 import java.util.ArrayList;
 
-public class CustomFilter extends Filter {
+public class CustomFilterMovie extends Filter {
 
     ListMovieAdapter listMovieAdapter;
     ArrayList<Movie> filterListMovie;
 
-    public CustomFilter(ArrayList<Movie> filterListMovie, ListMovieAdapter listMovieAdapter) {
+    public CustomFilterMovie(ArrayList<Movie> filterListMovie, ListMovieAdapter listMovieAdapter) {
         this.listMovieAdapter = listMovieAdapter;
         this.filterListMovie = filterListMovie;
     }
