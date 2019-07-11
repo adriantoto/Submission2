@@ -57,7 +57,7 @@ public class TvshowsData {
                     "25 minutes",
                     "https://www.youtube.com/watch?v=y_0APzy4BcU&t=2s",
                     "TV-PG",
-                    "Animation, Comedy, Adventure",
+                    "Animation, Adventure",
                     "71",
                     "Long ago in the mountains, a fighting master known as Gohan discovered a strange boy whom he named Goku. Gohan raised him and trained Goku in martial arts until he died. The young and very strong boy was on his own, but easily managed. Then one day, Goku met a teenage girl named Bulma, whose search for the dragon balls brought her to Goku's home. Together, they set off to find all seven dragon balls in an adventure that would change Goku's life forever. See how Goku met his life long friends Bulma, Yamcha, Krillin, Master Roshi and more."},
 
@@ -101,7 +101,7 @@ public class TvshowsData {
                     "43 minutes",
                     "https://www.youtube.com/watch?v=0d1zpt6k5OI",
                     "TV-14",
-                    "Drama, Fantasy",
+                    "Crime, Drama, Fantasy",
                     "68",
                     "Everyone knows the name Commissioner Gordon. He is one of the crime world's greatest foes, a man whose reputation is synonymous with law and order. But what is known of Gordon's story and his rise from rookie detective to Police Commissioner? What did it take to navigate the multiple layers of corruption that secretly ruled Gotham City, the spawning ground of the world's most iconic villains? And what circumstances created them – the larger-than-life personas who would become Catwoman, The Penguin, The Riddler, Two-Face and The Joker?"},
 
@@ -123,7 +123,7 @@ public class TvshowsData {
                     "45 minutes",
                     "https://www.youtube.com/watch?v=BhtDgn31XZo",
                     "TV-14",
-                    "Action, Adventure",
+                    "Action, Crime",
                     "67",
                     "From murder and espionage to terrorism and stolen submarines, a team of special agents investigates any crime that has a shred of evidence connected to Navy and Marine Corps personnel, regardless of rank or position."},
 

@@ -1,6 +1,8 @@
 package dicoding.adrian.madesubmission2;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -62,7 +64,13 @@ public class ListTvshowAdapter extends RecyclerView.Adapter<ListTvshowAdapter.Ca
         holder.setItemClickListenerTvshow(new ItemClickListenerTvshow() {
             @Override
             public void onItemClick(View v, int pos) {
-                Toast.makeText(context, listTvshow.get(pos).getTitle(), Toast.LENGTH_SHORT).show();
+                // Define and Start Intent
+                Intent moveWithObjectIntentTvshow = new Intent(context, DetailTvshowActivity.class);
+                moveWithObjectIntentTvshow.putExtra(DetailTvshowActivity.EXTRA_TVSHOW, listTvshow.get(pos));
+                context.startActivity(moveWithObjectIntentTvshow);
+
+                // Intent Transition Animation
+                ((Activity) context).overridePendingTransition(R.anim.slide_up, R.anim.no_animation);
             }
         });
 

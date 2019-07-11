@@ -66,7 +66,6 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
         holder.setItemClickListenerMovie(new ItemClickListenerMovie() {
             @Override
             public void onItemClick(View v, int pos) {
-                //Toast.makeText(context, listMovie.get(pos).getTitle(), Toast.LENGTH_SHORT).show();
                 // Define and Start Intent
                 Intent moveWithObjectIntent = new Intent(context, DetailMovieActivity.class);
                 moveWithObjectIntent.putExtra(DetailMovieActivity.EXTRA_MOVIE, listMovie.get(pos));
