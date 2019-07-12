@@ -9,14 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -26,19 +23,19 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
 
     private Context context;
     private ArrayList<Movie> listMovie, filterListMovie;
-    CustomFilterMovie filter;
+    private CustomFilterMovie filter;
 
-    public ListMovieAdapter(Context context, ArrayList<Movie> listMovie) {
+    ListMovieAdapter(Context context, ArrayList<Movie> listMovie) {
         this.context = context;
         this.listMovie = listMovie;
         this.filterListMovie = listMovie;
     }
 
-    public ArrayList<Movie> getListMovie() {
+    private ArrayList<Movie> getListMovie() {
         return listMovie;
     }
 
-    public void setListMovie(ArrayList<Movie> listMovie) {
+    void setListMovie(ArrayList<Movie> listMovie) {
         this.listMovie = listMovie;
     }
 
@@ -124,7 +121,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
             this.itemClickListenerMovie.onItemClick(v, getLayoutPosition());
         }
 
-        public void setItemClickListenerMovie(ItemClickListenerMovie ic) {
+        void setItemClickListenerMovie(ItemClickListenerMovie ic) {
             this.itemClickListenerMovie = ic;
         }
     }

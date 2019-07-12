@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class CustomFilterMovie extends Filter {
 
-    ListMovieAdapter listMovieAdapter;
-    ArrayList<Movie> filterListMovie;
+    private ListMovieAdapter listMovieAdapter;
+    private ArrayList<Movie> filterListMovie;
 
-    public CustomFilterMovie(ArrayList<Movie> filterListMovie, ListMovieAdapter listMovieAdapter) {
+    CustomFilterMovie(ArrayList<Movie> filterListMovie, ListMovieAdapter listMovieAdapter) {
         this.listMovieAdapter = listMovieAdapter;
         this.filterListMovie = filterListMovie;
     }

@@ -30,6 +30,7 @@
             android:id="@+id/img_item_poster_tvshow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/contentdesc_poster"
             android:scaleType="fitXY"
             tools:src="@android:color/darker_gray" />
 
@@ -136,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
-        android:text="%"
+        android:text="@string/percent"
         android:textColor="@color/duskYellow"
         android:textSize="12sp"
         android:textStyle="bold"

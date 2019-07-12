@@ -14,7 +14,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.bumptech.glide.Glide;
 
@@ -24,19 +24,19 @@ public class ListTvshowAdapter extends RecyclerView.Adapter<ListTvshowAdapter.Ca
 
     private Context context;
     private ArrayList<Tvshow> listTvshow, filterListTvshow;
-    CustomFilterTvshow filter;
+    private CustomFilterTvshow filter;
 
-    public ListTvshowAdapter(Context context, ArrayList<Tvshow> listTvshow) {
+    ListTvshowAdapter(Context context, ArrayList<Tvshow> listTvshow) {
         this.context = context;
         this.listTvshow = listTvshow;
         this.filterListTvshow = listTvshow;
     }
 
-    public ArrayList<Tvshow> getListTvshow() {
+    private ArrayList<Tvshow> getListTvshow() {
         return listTvshow;
     }
 
-    public void setListTvshow(ArrayList<Tvshow> listTvshow) {
+    void setListTvshow(ArrayList<Tvshow> listTvshow) {
         this.listTvshow = listTvshow;
     }
 
@@ -85,9 +85,7 @@ public class ListTvshowAdapter extends RecyclerView.Adapter<ListTvshowAdapter.Ca
 
     @Override
     public Filter getFilter() {
-        if (filter == null) {
-            filter = new CustomFilterTvshow(filterListTvshow, this);
-        }
+        if (filter == null) filter = new CustomFilterTvshow(filterListTvshow, this);
         return filter;
     }
 
@@ -122,7 +120,7 @@ public class ListTvshowAdapter extends RecyclerView.Adapter<ListTvshowAdapter.Ca
             this.itemClickListenerTvshow.onItemClick(v, getLayoutPosition());
         }
 
-        public void setItemClickListenerTvshow(ItemClickListenerTvshow ic) {
+        void setItemClickListenerTvshow(ItemClickListenerTvshow ic) {
             this.itemClickListenerTvshow = ic;
         }
     }

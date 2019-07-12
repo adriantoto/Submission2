@@ -75,7 +75,7 @@ public class MovieFragment extends Fragment {
         rvMovie.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Divider between item list
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL);
         itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.divider)));
         rvMovie.addItemDecoration(itemDecorator);
         rvMovie.setHasFixedSize(true);

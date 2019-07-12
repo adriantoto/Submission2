@@ -20,6 +20,13 @@
     <string name="change_language_settting">Change Language Setttings</string>
     <string name="movie_like">You like</string>
     <string name="tv_like">You like</string>
+    <string name="contentdesc_star">Star</string>
+    <string name="percent">%</string>
+    <string name="contentdesc_poster">poster</string>
+    <string name="contentdesc_back">back</string>
+    <string name="contentdesc_play">play</string>
+    <string name="contentdesc_poster_banner">poster banner</string>
+    <string name="logo_app">logo app</string>
 
 
     <string-array name="movie_title">

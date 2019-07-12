@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class CustomFilterTvshow extends Filter {
 
-    ListTvshowAdapter listTvshowAdapter;
-    ArrayList<Tvshow> filterListTvshow;
+    private ListTvshowAdapter listTvshowAdapter;
+    private ArrayList<Tvshow> filterListTvshow;
 
-    public CustomFilterTvshow(ArrayList<Tvshow> filterListTvshow, ListTvshowAdapter listTvshowAdapter) {
+    CustomFilterTvshow(ArrayList<Tvshow> filterListTvshow, ListTvshowAdapter listTvshowAdapter) {
         this.listTvshowAdapter = listTvshowAdapter;
         this.filterListTvshow = filterListTvshow;
     }

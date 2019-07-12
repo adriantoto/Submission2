@@ -20,6 +20,13 @@
     <string name="change_language_settting">Ubah Pengaturan Bahasa</string>
     <string name="movie_like">Anda meyukai</string>
     <string name="tv_like">Anda menyukai</string>
+    <string name="contentdesc_star">bintang</string>
+    <string name="percent">%</string>
+    <string name="contentdesc_poster">poster</string>
+    <string name="contentdesc_back">kembali</string>
+    <string name="contentdesc_play">putar</string>
+    <string name="contentdesc_poster_banner">poster banner</string>
+    <string name="logo_app">logo app</string>
 
     <string-array name="movie_title">
         <item>A Star Is Born</item>
