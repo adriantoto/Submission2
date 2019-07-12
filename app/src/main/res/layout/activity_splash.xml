@@ -22,7 +22,7 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Movie Catalogue"
+        android:text="@string/splashscreen_title"
         android:textColor="@color/white"
         android:textSize="23sp"
         android:textStyle="bold"

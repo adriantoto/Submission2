@@ -1,15 +1,10 @@
 package dicoding.adrian.madesubmission2;
 
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,57 +14,73 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.SearchView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-
-import static dicoding.adrian.madesubmission2.MoviesData.string_data;
-
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends Fragment {
 
-    private RecyclerView rvMovie;
-    private ArrayList<Movie> list = new ArrayList<>();
     private ListMovieAdapter listMovieAdapter;
+
+    // Item Data Variables Declaration
+    private String[] movieTitle;
+    private String[] movieReleasedYear;
+    private String[] movieOverview;
+    private String[] movieRating;
+    private String[] movieGenre;
+    private int[] movieScore;
+    private String[] movieTrailer;
+    private String[] movieRuntime;
+    private String[] movieDirector;
+    private String[] moviePoster;
 
     public MovieFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_movie, container, false);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Declare RecyclerView
-        rvMovie = view.findViewById(R.id.rv_movie);
+        // Casting data resources
+        movieTitle = getResources().getStringArray(R.array.movie_title);
+        movieDirector = getResources().getStringArray(R.array.movie_director);
+        movieGenre = getResources().getStringArray(R.array.movie_genre);
+        movieOverview = getResources().getStringArray(R.array.movie_overview);
+        moviePoster = getResources().getStringArray(R.array.movie_poster);
+        movieRating = getResources().getStringArray(R.array.movie_rating);
+        movieReleasedYear = getResources().getStringArray(R.array.movie_released);
+        movieRuntime = getResources().getStringArray(R.array.movie_runtime);
+        movieTrailer = getResources().getStringArray(R.array.movie_trailer);
+        movieScore = getResources().getIntArray(R.array.movie_score);
+
+        // Adapter Instance
+        listMovieAdapter = new ListMovieAdapter(getActivity(), getMovies());
+
+        // Declare and Cast RecyclerView
+        RecyclerView rvMovie = view.findViewById(R.id.rv_movie);
+
+        // Layout Manager
+        rvMovie.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Divider between item list
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
+        itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.divider)));
         rvMovie.addItemDecoration(itemDecorator);
         rvMovie.setHasFixedSize(true);
 
-        // Get All The Data
-        list.addAll(MoviesData.getListData());
-        showRecyclerList();
-    }
-
-    private void showRecyclerList() {
-        rvMovie.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listMovieAdapter = new ListMovieAdapter(getActivity(), list);
+        // Set Adapter
         rvMovie.setAdapter(listMovieAdapter);
     }
 
@@ -99,4 +110,24 @@ public class MovieFragment extends Fragment {
         });
 
     }
+
+    private ArrayList<Movie> getMovies() {
+        ArrayList<Movie> movies = new ArrayList<>();
+        for (int i = 0; i < movieTitle.length; i++) {
+            Movie movie = new Movie();
+            movie.setPoster(moviePoster[i]);
+            movie.setTitle(movieTitle[i]);
+            movie.setOverview(movieOverview[i]);
+            movie.setRating(movieRating[i]);
+            movie.setGenre(movieGenre[i]);
+            movie.setReleasedYear(movieReleasedYear[i]);
+            movie.setScore(movieScore[i]);
+            movie.setTrailer(movieTrailer[i]);
+            movie.setRuntime(movieRuntime[i]);
+            movie.setDirector(movieDirector[i]);
+            movies.add(movie);
+        }
+        return movies;
+    }
+
 }
