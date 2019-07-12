@@ -95,7 +95,7 @@ public class DetailTvshowActivity extends AppCompatActivity {
         urlTrailerTvshow = tvshow.getTrailer();
 
         // setOnLikeListener likeButton
-        final String forToastTvshow = "Anda menyukai " + tvshow.getTitle();
+        final String forToastTvshow = DetailTvshowActivity.this.getString(R.string.tv_like) + " " + tvshow.getTitle();
         likeButtonTvshow.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {

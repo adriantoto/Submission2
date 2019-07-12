@@ -98,7 +98,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         urlTrailer = movie.getTrailer();
 
         // setOnLikeListener likeButton
-        final String forToast = "Anda menyukai " + movie.getTitle();
+        final String forToast = DetailMovieActivity.this.getString(R.string.movie_like) + " " + movie.getTitle();
         likeButton.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
