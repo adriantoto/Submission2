@@ -18,22 +18,33 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TVShowFragment extends Fragment {
 
-    private RecyclerView rvTvshow;
-    private ArrayList<Tvshow> list = new ArrayList<>();
     private ListTvshowAdapter listTvshowAdapter;
+
+    // Item Data Variables Declaration
+    private String[] tvshowTitle;
+    private String[] tvshowReleasedYear;
+    private String[] tvshowOverview;
+    private String[] tvshowRating;
+    private String[] tvshowGenre;
+    private int[] tvshowScore;
+    private String[] tvshowTrailer;
+    private String[] tvshowRuntime;
+    private String[] tvshowDirector;
+    private String[] tvshowPoster;
 
     public TVShowFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_tvshow, container, false);
@@ -44,23 +55,34 @@ public class TVShowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Declare RecyclerView
-        rvTvshow = view.findViewById(R.id.rv_tvShow);
+        // Casting data resources
+        tvshowTitle = getResources().getStringArray(R.array.tv_title);
+        tvshowDirector = getResources().getStringArray(R.array.tv_director);
+        tvshowGenre = getResources().getStringArray(R.array.tv_genre);
+        tvshowOverview = getResources().getStringArray(R.array.tv_overview);
+        tvshowPoster = getResources().getStringArray(R.array.tv_poster);
+        tvshowRating = getResources().getStringArray(R.array.tv_rating);
+        tvshowReleasedYear = getResources().getStringArray(R.array.tv_released);
+        tvshowRuntime = getResources().getStringArray(R.array.tv_runtime);
+        tvshowTrailer = getResources().getStringArray(R.array.tv_trailer);
+        tvshowScore = getResources().getIntArray(R.array.tv_score);
+
+        // Adapter Instance
+        listTvshowAdapter = new ListTvshowAdapter(getActivity(), getTvshow());
+
+        // Declare and Cast RecyclerView
+        RecyclerView rvTvshow = view.findViewById(R.id.rv_tvShow);
+
+        // Layout Manager
+        rvTvshow.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Divider between item list
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getContext(), R.drawable.divider));
+        DividerItemDecoration itemDecorator = new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.divider)));
         rvTvshow.addItemDecoration(itemDecorator);
         rvTvshow.setHasFixedSize(true);
 
-        // Get All The Data
-        list.addAll(TvshowsData.getListData());
-        showRecyclerList();
-    }
-
-    private void showRecyclerList() {
-        rvTvshow.setLayoutManager(new LinearLayoutManager(getActivity()));
-        listTvshowAdapter = new ListTvshowAdapter(getActivity(), list);
+        // Set Adapter
         rvTvshow.setAdapter(listTvshowAdapter);
     }
 
@@ -90,4 +112,24 @@ public class TVShowFragment extends Fragment {
         });
 
     }
+
+    private ArrayList<Tvshow> getTvshow() {
+        ArrayList<Tvshow> tvshows = new ArrayList<>();
+        for (int i = 0; i < tvshowTitle.length; i++) {
+            Tvshow tvshow = new Tvshow();
+            tvshow.setPoster(tvshowPoster[i]);
+            tvshow.setTitle(tvshowTitle[i]);
+            tvshow.setOverview(tvshowOverview[i]);
+            tvshow.setRating(tvshowRating[i]);
+            tvshow.setGenre(tvshowGenre[i]);
+            tvshow.setReleasedYear(tvshowReleasedYear[i]);
+            tvshow.setScore(tvshowScore[i]);
+            tvshow.setTrailer(tvshowTrailer[i]);
+            tvshow.setRuntime(tvshowRuntime[i]);
+            tvshow.setDirector(tvshowDirector[i]);
+            tvshows.add(tvshow);
+        }
+        return tvshows;
+    }
+
 }
